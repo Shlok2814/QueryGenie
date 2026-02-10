@@ -1,6 +1,6 @@
-# ╔══════════════════════╗
-      QueryGenie
-  ╚══════════════════════╝
+# QueryGenie╔══════════════════════╗
+      
+            ╚══════════════════════╝
 
 
 ### Universal Text → SQL Generator powered by GenAI
