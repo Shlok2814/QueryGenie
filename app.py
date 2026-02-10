@@ -8,9 +8,7 @@ from langchain_ollama import OllamaLLM
 from langchain_core.prompts import PromptTemplate
 
 
-# =========================================================
-# PAGE CONFIG (better UI)
-# =========================================================
+
 st.set_page_config(
     page_title="Universal Text → SQL",
     layout="wide",
@@ -25,9 +23,7 @@ st.markdown("""
 st.divider()
 
 
-# =========================================================
-# SIDEBAR (clean layout)
-# =========================================================
+
 with st.sidebar:
     st.header("⚙ Controls")
     st.write("1. Upload file")
@@ -37,9 +33,7 @@ with st.sidebar:
     st.info("Works with ANY CSV / Excel file")
 
 
-# =========================================================
-# STEP 1 — Upload dataset
-# =========================================================
+
 file = st.file_uploader(
     "📂 Upload CSV or Excel",
     type=["csv", "xlsx"]
@@ -50,9 +44,7 @@ if file is None:
     st.stop()
 
 
-# =========================================================
-# STEP 2 — Read dataset
-# =========================================================
+
 if file.name.endswith(".csv"):
     df = pd.read_csv(file)
 else:
@@ -71,9 +63,7 @@ with st.expander("📄 Preview Data"):
     st.dataframe(df.head(20), use_container_width=True)
 
 
-# =========================================================
-# STEP 3 — Convert → SQLite automatically
-# =========================================================
+
 conn = sqlite3.connect("temp.db")
 
 df.to_sql(
@@ -84,9 +74,7 @@ df.to_sql(
 )
 
 
-# =========================================================
-# STEP 4 — Setup LLM + LangChain
-# =========================================================
+
 llm = OllamaLLM(
     model="phi3",
     temperature=0,
@@ -119,18 +107,14 @@ SQL:
 chain = prompt | llm
 
 
-# =========================================================
-# Clean SQL
-# =========================================================
+
 def clean_sql(text):
     text = text.replace("```sql", "").replace("```", "")
     match = re.search(r"SELECT[\s\S]*?;", text, re.IGNORECASE)
     return match.group(0).strip() if match else text.strip()
 
 
-# =========================================================
-# STEP 5 — Ask question
-# =========================================================
+
 st.divider()
 st.subheader("💬Ask your question")
 
@@ -151,9 +135,7 @@ if st.button(" Generate SQL & Result") and question:
 
         sql = clean_sql(raw_sql)
 
-        # =====================================================
-        # SHOW SQL
-        # =====================================================
+       
         st.subheader("🧾 Generated SQL")
         editable_sql = st.text_area(
             "Edit if needed:",
@@ -162,22 +144,16 @@ if st.button(" Generate SQL & Result") and question:
         )
 
 
-        # =====================================================
-        # RUN QUERY
-        # =====================================================
+       
         result = pd.read_sql_query(editable_sql, conn)
 
 
-        # =====================================================
-        # RESULT TABLE
-        # =====================================================
+       
         st.subheader("📊 Result Table")
         st.dataframe(result, use_container_width=True)
 
 
-        # =====================================================
-        # AUTO VISUALIZATION (NEW FEATURE)
-        # =====================================================
+     
         st.subheader("📈 Visualization")
 
         numeric_cols = result.select_dtypes(include="number").columns
@@ -197,9 +173,7 @@ if st.button(" Generate SQL & Result") and question:
             st.info("No numeric columns available for chart")
 
 
-        # =====================================================
-        # DOWNLOAD BUTTON (NEW)
-        # =====================================================
+      
         csv = result.to_csv(index=False).encode("utf-8")
 
         st.download_button(
@@ -210,9 +184,7 @@ if st.button(" Generate SQL & Result") and question:
         )
 
 
-        # =====================================================
-        # SHOW SCHEMA (optional)
-        # =====================================================
+       
         with st.expander("🗂 View Table Schema"):
             st.code(schema)
 
