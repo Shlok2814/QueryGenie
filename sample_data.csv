@@ -1,0 +1,52 @@
+order_id,date,customer_name,city,product,category,quantity,price,payment_method,sales_rep
+1001,2024-01-05,Amit Sharma,Mumbai,Laptop,Electronics,1,65000,Card,Rahul
+1002,2024-01-06,Priya Mehta,Delhi,Phone,Electronics,2,30000,UPI,Sneha
+1003,2024-01-06,Raj Verma,Pune,Table,Furniture,1,12000,Cash,Rahul
+1004,2024-01-07,Neha Jain,Mumbai,Chair,Furniture,4,3000,Card,Aman
+1005,2024-01-08,Karan Singh,Delhi,Laptop,Electronics,1,62000,UPI,Sneha
+1006,2024-01-09,Simran Kaur,Bangalore,Headphones,Electronics,3,2000,Card,Aman
+1007,2024-01-10,Arjun Rao,Chennai,Desk,Furniture,2,15000,Cash,Rahul
+1008,2024-01-11,Meera Iyer,Bangalore,Phone,Electronics,1,28000,Card,Sneha
+1009,2024-01-12,Rohit Das,Kolkata,Chair,Furniture,5,2800,UPI,Aman
+1010,2024-01-13,Anjali Roy,Mumbai,Laptop,Electronics,1,70000,Card,Rahul
+1011,2024-01-14,Varun Patel,Pune,Phone,Electronics,2,31000,Cash,Sneha
+1012,2024-01-15,Kavya Nair,Delhi,Desk,Furniture,1,14000,UPI,Aman
+
+
+🚀 Queries you can ask 
+
+Total sales amount
+total sales
+
+Count orders
+number of orders
+
+Show all data
+show all records
+
+🟢 SALES / REVENUE
+Total revenue
+total revenue
+
+Average order value
+average price
+
+Revenue by product
+sales by product
+
+Revenue by city
+sales by city
+
+Revenue by category
+sales by category
+
+🟢 GROUPING
+Orders per city
+count orders by city
+
+Orders per sales rep
+orders by sales rep
+
+Payment method usage
+count by payment method
+
