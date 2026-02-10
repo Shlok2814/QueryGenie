@@ -3,7 +3,7 @@
             
 
 ### Universal Text → SQL Generator powered by GenAI
-LINK- https://querygenie-s.streamlit.app/
+QUICK LINK- https://querygenie-s.streamlit.app/
 
 QueryGenie lets you upload ANY dataset and ask questions in plain English.  
 It automatically generates SQL queries and shows results instantly.
